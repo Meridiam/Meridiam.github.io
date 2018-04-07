@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Moneybags</title>
+        <script defer type="text/javascript" src="https://s3.amazonaws.com/stitch-sdks/js/library/v3/stable/stitch.min.js"></script>
+    </head>
+    <body>
+        <script>
+            function parseQuery(queryString) {
+                var query = {};
+                var pairs = (queryString[0] === '?' ? queryString.substr(1) : queryString).split('&');
+                for (var i = 0; i < pairs.length; i++) {
+                    var pair = pairs[i].split('=');
+                    query[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '');
+                }
+                return query;
+            }
+            var params = parseQuery(window.location.search)
+            yourStitchClient.auth.provider('userpass').emailConfirm(params.tokenID, params.token)
+                .then(() => {
+                    console.log("Successfully confirmed email address!");
+                })
+                .catch(err => {
+                    console.log("Error confirming email address:", err);
+                });
+        </script>
+    </body>
+</html>

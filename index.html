@@ -1,1 +1,18 @@
-Hello World
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Moneybags</title>
+        <script defer type="text/javascript" src="https://s3.amazonaws.com/stitch-sdks/js/library/v3/stable/stitch.min.js"></script>
+    </head>
+    <body>
+        <script>
+            yourStitchClient.register('png.jrry@gmail.com', '123456789')
+                .then(() => {
+                    console.log("Successfully sent account confirmation email!");
+                })
+                .catch(err => {
+                    console.log("Error registering new user:", err);
+                });
+        </script>
+    </body>
+</html>
