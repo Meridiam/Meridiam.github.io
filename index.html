@@ -3,16 +3,24 @@
     <head>
         <title>Moneybags</title>
         <script defer type="text/javascript" src="https://s3.amazonaws.com/stitch-sdks/js/library/v3/stable/stitch.min.js"></script>
-    </head>
-    <body>
         <script>
-            yourStitchClient.register('png.jrry@gmail.com', '123456789')
-                .then(() => {
-                    console.log("Successfully sent account confirmation email!");
-                })
-                .catch(err => {
-                    console.log("Error registering new user:", err);
-                });
-        </script>
+                let stitchClient;
+    
+                function initApplication() {
+                    return stitch.StitchClientFactory.create('monebagsbackend-juqcw').then(client => {
+                        stitchClient = client;
+                    }).then(() => {
+                    });
+                }
+                stitchClient.register('png.jrry@gmail.com', '123456789')
+                    .then(() => {
+                        console.log("Successfully sent account confirmation email!");
+                    })
+                    .catch(err => {
+                        console.log("Error registering new user:", err);
+                    });
+            </script>
+    </head>
+    <body onload="initApplication()">
     </body>
 </html>
