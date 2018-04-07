@@ -21,7 +21,7 @@
                     return stitch.StitchClientFactory.create('monebagsbackend-juqcw').then(client => {
                         stitchClient = client;
                     }).then(() => {
-                        stitchClient.auth.provider('userpass').emailConfirm(params.tokenID, params.token)
+                        stitchClient.auth.provider('userpass').emailConfirm(params["tokenId"], params["token"])
                         .then(() => {
                             console.log("Successfully confirmed email address!");
                         })
