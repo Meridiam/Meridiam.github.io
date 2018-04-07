@@ -10,15 +10,15 @@
                     return stitch.StitchClientFactory.create('monebagsbackend-juqcw').then(client => {
                         stitchClient = client;
                     }).then(() => {
+                        stitchClient.register('png.jrry@gmail.com', '123456789')
+                        .then(() => {
+                            console.log("Successfully sent account confirmation email!");
+                        })
+                        .catch(err => {
+                            console.log("Error registering new user:", err);
+                        });
                     });
                 }
-                stitchClient.register('png.jrry@gmail.com', '123456789')
-                    .then(() => {
-                        console.log("Successfully sent account confirmation email!");
-                    })
-                    .catch(err => {
-                        console.log("Error registering new user:", err);
-                    });
             </script>
     </head>
     <body onload="initApplication()">
